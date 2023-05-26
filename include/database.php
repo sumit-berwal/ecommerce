@@ -1,5 +1,4 @@
 <?php
-require_once('initialize.php');
 require_once(LIB_PATH.DS.'config.php');
 
 class Database{
@@ -19,12 +18,12 @@ class Database{
     public function open_connection() {
         $this->con = mysqli_connect(server, user, pass);
         if(!$this->con){
-            echo "There is a problem in database conection! Connect with administrater";
+            echo "There is a problem in database connection! Connect with administrator";
             exit();
         }else{
             $db_select = mysqli_select_db($this->con, database_name);
             if(!$db_select){
-                echo "Database is not found! Please connect with administrater";
+                echo "Database is not found! Please connect with administrator";
                 exit();
             }
         }
@@ -51,5 +50,4 @@ class Database{
     }
 }
 
-$wpdb = new Database();
-echo $wpdb->open_connection();
+$db = new Database();
