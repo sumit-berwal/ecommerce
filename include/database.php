@@ -1,4 +1,5 @@
 <?php
+// require_once('initialize.php');
 require_once(LIB_PATH.DS.'config.php');
 
 class Database{
@@ -46,7 +47,23 @@ class Database{
         return $result;
     }
     function loadSingleResult(){
-        $cur = executeQuery();
+        $cur = $this->executeQuery();
+        while($row = mysqli_fetch_object($cur)){
+            return $data = $row;
+        }
+        mysqli_free_result($cur);
+    }
+    function getFieldsOnOneTable($tbl_name){
+        $this->setQuery('DESC', $tbl_name);
+        $rows = loadResultList();
+    }
+
+
+    public function fetch_array($result){
+        return mysqli_fetch_array($result);
+    }
+    public function num_rows($result_set){
+        return mysqli_num_rows($result_set);
     }
 }
 

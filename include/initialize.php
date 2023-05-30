@@ -14,6 +14,9 @@ defined('LIB_PATH') ? null : define('LIB_PATH', SITE_ROOT.DS.'include');
 // require some important files
 require_once(LIB_PATH.DS.'config.php');
 
+require_once(LIB_PATH.DS.'session.php');
+require_once(LIB_PATH.DS.'accounts.php');
 
 
 require_once(LIB_PATH.DS.'database.php');
+?>
